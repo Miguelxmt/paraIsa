@@ -1,0 +1,277 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+  background-color: #006B3C;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= LOGIN ================= */
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container.hidden {
+  display: none;
+}
+
+form.login {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: aparecer 1s ease;
+}
+
+form.login h2 {
+  text-align: center;
+  color: #006B3C;
+  font-size: 22px;
+}
+
+form.login input[type="date"] {
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid #ffb6c1;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+form.login input[type="date"]:focus {
+  border-color: #ff4d6d;
+  box-shadow: 0 0 8px rgba(255, 77, 109, 0.4);
+}
+
+form.login button {
+  padding: 12px;
+  border-radius: 15px;
+  border: none;
+  background: linear-gradient(135deg, #ff4d6d, #ff85a1);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form.login button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 77, 109, 0.5);
+}
+
+/* ================= CONTEÚDO ================= */
+.displayNone {
+  display: none;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 40px 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+
+/* ================= POLAROIDS ================= */
+.polaroids {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ================= CARTAS ================= */
+.cartas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8vw;
+}
+
+/* ================= FLIP ================= */
+.photo,
+.photoCard {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.photo {
+  width: 20vw;
+  height: 23vw;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoCard {
+  width: 40vh;
+  height: 30vw;
+}
+.photoCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  background: #fff;
+  border: 4px solid #ff85a1;
+  box-shadow: 
+    0 0 0 6px #fff0f6,
+    0 12px 25px rgba(255, 77, 109, 0.3);
+
+} 
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.photo.virada .card-inner,
+.photoCard.virada .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* ================= FACES ================= */
+.card-front,
+.card-back,
+.card-front2,
+.card-back2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+/* CARTAS */
+.card-front {
+  background: #fff;
+  color: #006B3C;
+  border-radius: 10px;
+}
+
+.card-back {
+  background: #ffdee9;
+  transform: rotateY(180deg);
+  border-radius: 10px;
+}
+
+/* POLAROID */
+.card-front2 {
+  border: 2vh solid #fff;
+  border-bottom: 10vh solid #fff;
+  background: black;
+}
+
+.card-back2 {
+  background: white;
+  transform: rotateY(180deg);
+  font-family: cursive;
+  font-size: small;
+  padding: 0.5vw;
+}
+
+/* ================= CORAÇÕES ================= */
+.coracao {
+  position: fixed;
+  bottom: 0;
+  animation: subir 3s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes subir {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+/* ================= ANIMAÇÕES ================= */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 900px) {
+  .polaroids,
+  .cartas {
+    flex-direction: column;
+  }
+
+  .photo,
+  .photoCard {
+    width: 70vw;
+    height: 60vw;
+  }
+}
+.timer {
+  background: #fff0f6;
+  border: 3px dashed #ff8fab;
+  border-radius: 20px;
+  padding: 25px 30px;
+  width: fit-content;
+  margin: 40px auto;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(255, 143, 171, 0.3);
+  font-family: 'Arial', sans-serif;
+}
+
+.timer h2 {
+  color: #ff4d6d;
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+}
+
+#contador {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #590d22;
+}
+
+#contador span {
+  background: #ffe5ec;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #ff4d6d;
+  min-width: 50px;
+}
